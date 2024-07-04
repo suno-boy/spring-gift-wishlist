@@ -1,5 +1,7 @@
-package gift;
+package gift.Controller;
 
+import gift.DTO.Product;
+import gift.DAO.ProductRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

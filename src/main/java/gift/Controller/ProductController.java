@@ -1,5 +1,7 @@
-package gift;
+package gift.Controller;
 
+import gift.DTO.Product;
+import gift.DAO.ProductRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
