@@ -8,6 +8,9 @@ public class Product {
 
     public Product(long l, String product1, double v) {}
 
+    public Product() {
+    }
+
     public Product(Long id, String name, int price, String imageUrl) {
         this.id = id;
         this.name = name;
