@@ -41,7 +41,7 @@ public class ProductController {
             return ResponseEntity.notFound().build();
         }
 
-        // 기존 제품 ID와 다를 때 기존 제품 삭제 후 새 제품 추가
+        // ID 변경이 정상적으로 작동하지 않아 추가한 코드입니다!
         if (!existingProduct.getId().equals(product.getId())) {
             productRepository.deleteById(id);
         }
