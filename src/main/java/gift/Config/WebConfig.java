@@ -16,7 +16,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(interceptorOfToken)
-                .addPathPatterns("/**")
-                .excludePathPatterns("/members/**");
+                .addPathPatterns("/**") // 인터셉터가 적용될 경로 패턴을 설정
+                .excludePathPatterns("/user/**"); // 인터셉처 적용 안 해도 되는 경로 패턴 설정
     }
 }
