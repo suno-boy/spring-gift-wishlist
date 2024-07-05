@@ -1,11 +1,10 @@
-package gift.DTO;
+package gift.Entity;
 
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 
-public class Product {
+public class ProductEntity {
     private Long id;
 
     @Size(max = 15, message = "상품 이름은 공백을 포함하여 최대 15자까지 입력할 수 있습니다.")
@@ -15,12 +14,12 @@ public class Product {
     private int price;
     private String imageUrl;
 
-    public Product(long l, String product1, double v) {}
+    public ProductEntity(long l, String product1, double v) {}
 
-    public Product() {
+    public ProductEntity() {
     }
 
-    public Product(Long id, String name, int price, String imageUrl) {
+    public ProductEntity(Long id, String name, int price, String imageUrl) {
         this.id = id;
         this.name = name;
         this.price = price;

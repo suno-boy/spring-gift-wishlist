@@ -1,6 +1,6 @@
 package gift.Controller;
 
-import gift.DTO.Product;
+import gift.Entity.ProductEntity;
 import gift.DAO.ProductRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,13 +18,13 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Product>> getAllProducts() {
+    public ResponseEntity<List<ProductEntity>> getAllProducts() {
         return ResponseEntity.ok(productRepository.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
-        Product product = productRepository.findById(id);
+    public ResponseEntity<ProductEntity> getProductById(@PathVariable Long id) {
+        ProductEntity product = productRepository.findById(id);
         if (product == null) {
             return ResponseEntity.notFound().build();
         }
@@ -32,14 +32,14 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<Product> addProduct(@Valid @RequestBody Product product) {
+    public ResponseEntity<ProductEntity> addProduct(@Valid @RequestBody ProductEntity product) {
         productRepository.save(product);
         return ResponseEntity.status(201).body(product);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @Valid @RequestBody Product product) {
-        Product existingProduct = productRepository.findById(id);
+    public ResponseEntity<ProductEntity> updateProduct(@PathVariable Long id, @Valid @RequestBody ProductEntity product) {
+        ProductEntity existingProduct = productRepository.findById(id);
         if (existingProduct == null) {
             return ResponseEntity.notFound().build();
         }

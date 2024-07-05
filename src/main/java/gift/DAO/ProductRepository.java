@@ -1,6 +1,6 @@
 package gift.DAO;
 
-import gift.DTO.Product;
+import gift.Entity.ProductEntity;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -15,22 +15,22 @@ public class ProductRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<Product> findAll() {
+    public List<ProductEntity> findAll() {
         String sql = "SELECT * FROM Product";
-        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class));
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(ProductEntity.class));
     }
 
-    public Product findById(Long id) {
+    public ProductEntity findById(Long id) {
         String sql = "SELECT * FROM Product WHERE id = ?";
-        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Product.class), id);
+        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(ProductEntity.class), id);
     }
 
-    public int save(Product product) {
+    public int save(ProductEntity product) {
         String sql = "INSERT INTO Product (name, price, imageUrl) VALUES (?, ?, ?)";
         return jdbcTemplate.update(sql, product.getName(), product.getPrice(), product.getImageUrl());
     }
 
-    public int update(Product product) {
+    public int update(ProductEntity product) {
         String sql = "UPDATE Product SET id = ?, name = ?, price = ?, imageUrl = ? WHERE id = ?";
         return jdbcTemplate.update(sql, product.getId(), product.getName(), product.getPrice(), product.getImageUrl(), product.getId());
     }
